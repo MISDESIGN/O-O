@@ -4,5 +4,5 @@
 ###结构图
 #### ![image](https://github.com/MISDESIGN/O-O/blob/master/1.PNG)
 ###顺序图
-#### ![image](https://github.com/MISDESIGN/O-O/blob/master/2.PNG)
+#### ![image](https://github.com/MISDESIGN/O-O/blob/master/2.png)
 
