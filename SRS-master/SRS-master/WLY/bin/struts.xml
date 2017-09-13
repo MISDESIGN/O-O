@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<constant name="struts.i18n.encoding" value="UTF-8" />
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<constant name="struts.devMode" value="true" />
+
+
+	<package name="default" extends="struts-default">
+
+		<action name="professor_addStudent" class="studentAction"
+			method="add">
+			<!-- 添加学生成功，列出所有学生 -->
+			<result type="chain">professor_student</result>
+			<!-- 添加学生失败，跳转到添加学生的表单页 -->
+			<result name="error">/WEB-INF/professor/student.jsp</result>
+		</action>
+
+		<action name="professor_student" class="studentAction" method="list">
+			<result>/WEB-INF/professor/index.jsp</result>
+		</action>
+
+		<action name="professor_deleteStudent" class="studentAction"
+			method="delete">
+			<result type="chain">professor_student</result>
+		</action>
+
+
+		<!-- 登录 -->
+ 		<action name="person_login" class="personAction" method="login">
+			<result name="student">/WEB-INF/student/index.jsp</result>
+			<result name="professor">/WEB-INF/professor/index.jsp</result>
+		</action>
+ 
+
+		<!-- 学生选课 -->
+		 <action name="student_scheduleOfClasses" class="sheduleOfClassesAction" 
+			method="sheduleOfClasses"> <result name="sheduleOfClasses" type="json"> <param 
+			name="root">jsonMap</param> </result> </action> 
+
+		<!-- 学生选课 -->
+		 <action name="student_*" class="studentAction" method="{1}"> <result 
+			name="{1}" type="json"> <param name="root">jsonMap</param> </result> </action> 
+
+		<action name="*_*">
+			<result>/WEB-INF/{1}/{2}.jsp</result>
+		</action>
+
+
+	</package>
+</struts>
+ 
